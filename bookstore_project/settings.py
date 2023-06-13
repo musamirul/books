@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     #Third party apps
     'crispy_forms',
     'crispy_bootstrap4',
-    'allauth'
+    'allauth',
     'allauth.account',
 
     #Local
@@ -164,3 +164,9 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT = 'home'
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
