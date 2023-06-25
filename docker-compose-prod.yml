@@ -4,13 +4,11 @@ services:
     build: .
     command: gunicorn bookstore_project.wsgi -b 0.0.0.0:8000 # new
     environment:
-      - ENVIRONMENT = development
+      - ENVIRONMENT = production
       - SECRET_KEY=django-insecure-ym+!@s^v#uo6ek&a_4ae$7*knn@58cierwaamt*vnne$937dxz
-      - DEBUG=1
+      - DEBUG=0
       - STRIPE_TEST_PUBLISHABLE_KEY = pk_test_51NLSYiFySWH6pFOV5HaDJMU8NcDJzwzqOsk6yCDoAYStyFw8mHSFjVrG9aubidcYWCmg2qvgbOTGh8LfdpbLj7fO00ijLBpjKC
       - STRIPE_TEST_SECRET_KEY = sk_test_51NLSYiFySWH6pFOViwYMzevSs5iFIyfgPbMW1HZerfeon5iAk0trT8bxbU6wtjfFUaKr8kBkvNrP9yqDd3xeLz7J00433txvV1
-    volumes:
-      - .:/code
     ports:
       - 8000:8000
     depends_on:
@@ -19,8 +17,3 @@ services:
     image: postgres:15
     environment:
       POSTGRES_PASSWORD: postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-
-volumes:
-  postgres_data:

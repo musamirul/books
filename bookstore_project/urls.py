@@ -21,7 +21,7 @@ from django.urls import path, include # new
 
 urlpatterns = [
     # Django admin
-    path('admin/', admin.site.urls),
+    path('anything-but-admin/', admin.site.urls),
 
     # User management
     path('accounts/', include('allauth.urls')),
@@ -31,3 +31,10 @@ urlpatterns = [
     path('books/',include('books.urls')),
     path('orders/', include('orders.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ]+urlpatterns
